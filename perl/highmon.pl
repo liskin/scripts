@@ -1081,7 +1081,7 @@ sub format_buffer_name
 	}
 	elsif (weechat::config_get_plugin("short_names") eq "on" and weechat::config_get_plugin("short_names_server") eq "on")
 	{
-		$bufname = weechat::buffer_get_string($cb_bufferp, "localvar_server") . weechat::buffer_get_string($cb_bufferp, 'short_name');
+		$bufname = weechat::buffer_get_string($cb_bufferp, "localvar_server") . "." . weechat::buffer_get_string($cb_bufferp, 'short_name');
 	}
 	# Format name to short or 'nicename'
 	elsif (weechat::config_get_plugin("short_names") eq "on")
@@ -1090,7 +1090,7 @@ sub format_buffer_name
 	}
 	else
 	{
-		$bufname =~ s/(.*)\.([#&\+!])(.*)/$1$2$3/;
+		# $bufname =~ s/(.*)\.([#&\+!])(.*)/$1$2$3/;
 	}
 
 	# Set colour from buffer name
